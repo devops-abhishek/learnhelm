@@ -1,0 +1,17 @@
+helm install --name my-nginx .   or helm install --dry-run --debug --name my-nginx .
+helm upgrade my-nginx .
+helm rollback my-nginx 1
+helm delete --purge my-nginx
+helm inspect values .
+helm upgrade my-nginx . --set replicas=2
+helm package my-nginx
+
+helm serve --repo-path .           or             helm serve --repo-path . --address  "0.0.0.0:5000"
+helm repo list
+helm repo add local http://127.0.0.1:8879/charts
+helm repo index .
+helm repo update
+helm search local/ 
+helm install my-nginx local/my-nginx
+
+#kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=XXXXXX --docker-password=XXXXXX --docker-email=XXXXXX@XXXXXX.com

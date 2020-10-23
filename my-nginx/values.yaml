@@ -1,0 +1,13 @@
+
+replicas: 1
+
+image:
+    repository: achordia/test
+    tag: latest
+    pullPolicy: IfNotPresent
+
+imagePullSecrets: regcred
+
+service:
+    type: NodePort
+    nodePort: 30091 
