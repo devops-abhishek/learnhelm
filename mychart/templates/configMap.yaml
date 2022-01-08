@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  ##name: mychart-configmap
+  # Built-In object .Release.Name 
+  name: {{ .Release.Name }}
+data:
+  myvalue: "Sample Config Map"
+  #Read from values.yaml
+  costCode: {{ .Values.costCode }}
+  #Template Function
+  Zone: {{ quote .Values.infra.zone }}
+  Region: {{ quote .Values.infra.region }}
+  projectCode: {{ upper .Values.projectCode }}
+  #Template Function and Pipeline and Default Values
+  ##pipeline: {{ .Values.projectCode | upper | quote }}
+  ##now: {{ now | date "2006-01-02" | quote}}
+  ##contact: {{ .Values.contact | default "12345678890" | quote }}
+  #Flow Control - if/else
+  {{ if eq .Values.infra.region "us-e" -}}
+  ha: true
+  {{ end -}}

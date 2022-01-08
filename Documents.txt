@@ -1,0 +1,65 @@
+Helm 2 and Helm 3 Difference :
+Helm 2 : Uses Tiller component to deploy application on k8s cluster.
+Helm 3 : Works directly with k8s cluster using RBAC autorization.
+
+FIND HELM VERSION:
+#helm version
+
+HELM REPOSITORY PATH/URL :
+https://artifacthub.io/
+
+LIST ALL CHARTS in HUB :
+#helm search hub
+
+SEARCH a SPECIFIC CHART in HUB :
+#helm search hub nginx
+
+ADD STABLE REPO :
+#helm repo add stable https://charts.helm.sh/stable
+
+UPDATE REPO :
+#helm repo update
+
+LIST REPO :
+#helm repo list
+
+LOOK FOR THE CHARTS AVAILABLE IN STABLE REPO :
+#helm search repo stable
+
+FOR NGINX INSTALLATION :
+#helm repo add bitnami https://charts.bitnami.com/bitnami
+#helm repo update
+#helm install myapp
+OR 
+#helm uninstall myapp
+
+Charts Folder Structure:
+    templates : templates for application
+    charts : all dependent charts for Main Chart
+    Chart.yaml : Chart Name and other details.
+    values.yaml : provide values to the template
+    crds : Custom Resource Definiton
+
+CREATE A FRESH CHART:
+#helm create mychart
+#helm install mychart ./mychart
+
+Built-In Objects :
+URL : https://helm.sh/docs/chart_template_guide/builtin_objects/
+
+GET THE MANIFEST OF THE DEPLOYED HELM CHART:
+#helm get manifest mychart
+
+DRY RUN with DEBUG mode :
+#helm install --debug --dry-run mychart .\mychart\
+
+OVERWRITE values.yaml file using set:
+#helm install --debug --dry-run --set costCode=Abhishek mychart .\mychart\
+
+
+
+
+
+Queries:
+CRD : Custom Resource Definiton
+
