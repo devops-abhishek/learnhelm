@@ -2,5 +2,13 @@ costCode: CC98112
 projectCode: aazzxxyy
 infra:
   zone: a,b,c
-  region: us-e
+  region: us-n
 contact: "0987654321"
+tags:
+  machine: frontdrive
+  rack: 4c
+  drive: ssd
+  vcard: 8g
+LangUsed:
+  - python
+  - java

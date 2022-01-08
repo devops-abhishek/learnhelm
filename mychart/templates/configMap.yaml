@@ -17,6 +17,22 @@ data:
   ##now: {{ now | date "2006-01-02" | quote}}
   ##contact: {{ .Values.contact | default "12345678890" | quote }}
   #Flow Control - if/else
-  {{ if eq .Values.infra.region "us-e" -}}
-  ha: true
-  {{ end -}}
+  {{- if eq .Values.infra.region "us-e" }}
+  ha: {{ .Values.infra.region }}
+  {{- else if eq .Values.infra.region "us-w" }}
+  ha: {{ .Values.infra.region }}
+  {{- else }}
+  ha: {{ .Values.infra.region }}
+  {{- end }}
+  #Restricted Scope, we cannot access the built-in objects directly
+  {{- with .Values.tags }}
+  Machine Type: {{ .machine | default "NA" | quote }}
+  Rack ID: {{ .rack | quote }}
+  Storage Type: {{ .drive | upper | quote }}
+  Video Card: {{ .vcard | quote }}
+  {{- end }}
+  #Looping
+  Lang Used: |-
+    {{- range .Values.LangUsed }}
+    - {{. | title | quote }}
+    {{- end}}
